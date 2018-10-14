@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="pointcloud_tools" type="pointcloud_converter_node" name="pointcloud_converter_node" output="screen" respawn="true">
+        <rosparam file="$(find pointcloud_tools)/config/pointcloud_converter.yaml" command="load"/>
+    </node>
+</launch>
