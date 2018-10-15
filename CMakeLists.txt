@@ -31,8 +31,12 @@ include_directories(
 add_executable(pointcloud_converter_node src/pointcloud_converter_node.cpp src/pointcloud_converter.cpp)
 target_link_libraries(pointcloud_converter_node ${catkin_LIBRARIES})
 
+add_executable(pcd_writer_node src/pcd_writer_node.cpp src/pcd_writer.cpp)
+target_link_libraries(pcd_writer_node ${catkin_LIBRARIES})
+
 set(CPP_EXEC_NAMES 
   pointcloud_converter_node
+  pcd_writer_node
   )
 foreach(cpp_exec_names ${CPP_EXEC_NAMES})
   install(TARGETS ${cpp_exec_names}
