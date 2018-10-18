@@ -3,6 +3,7 @@
 
 //headers in ROS
 #include <ros/ros.h>
+#include <sensor_msgs/PointCloud2.h>
 
 //headers in PCL
 #include <pcl_conversions/pcl_conversions.h>
