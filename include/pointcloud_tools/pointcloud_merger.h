@@ -7,6 +7,7 @@
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
+#include <tf2_ros/transform_listener.h>
 
 //headers in PCL
 #include <pcl_conversions/pcl_conversions.h>
@@ -28,9 +29,12 @@ private:
     std::string pc2_topic_;
     boost::shared_ptr<message_filters::Subscriber<sensor_msgs::PointCloud2> > pc2_sub_;
     std::string output_topic_;
+    std::string output_frame_;
     ros::Publisher pointcloud_pub_;
     boost::shared_ptr<message_filters::Synchronizer<sync_policy> > sync_;
     ros::NodeHandle nh_;
+    tf2_ros::Buffer tf_buffer_;
+    tf2_ros::TransformListener tf_listener_;
 };
 
 #endif  //POINTCLOUD_MERGER_NODE_H_INCLUDED
