@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="pointcloud_merger_node" type="pointcloud_merger_node" name="pointcloud_merger_node" output="screen" respawn="true">
+    <node pkg="pointcloud_tools" type="pointcloud_merger_node" name="pointcloud_merger_node" output="screen" respawn="true">
         
     </node>
 </launch>

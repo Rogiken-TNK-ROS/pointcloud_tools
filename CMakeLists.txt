@@ -35,11 +35,11 @@ target_link_libraries(pointcloud_converter_node ${catkin_LIBRARIES})
 add_executable(pcd_writer_node src/pcd_writer_node.cpp src/pcd_writer.cpp)
 target_link_libraries(pcd_writer_node ${catkin_LIBRARIES})
 
-add_executable(poinccloud_merger_node src/pointcloud_merger_node.cpp src/pointcloud_merger.cpp)
-target_link_libraries(poinccloud_merger_node ${catkin_LIBRARIES})
+add_executable(pointcloud_merger_node src/pointcloud_merger_node.cpp src/pointcloud_merger.cpp)
+target_link_libraries(pointcloud_merger_node ${catkin_LIBRARIES})
 
 set(CPP_EXEC_NAMES 
-  poinccloud_merger_node
+  pointcloud_merger_node
   pointcloud_converter_node
   pcd_writer_node
   )
