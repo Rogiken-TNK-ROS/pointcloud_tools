@@ -1,0 +1,3 @@
+topic1: /points_raw_1
+topic2: /points_raw_2
+output_frame : base_link
