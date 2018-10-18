@@ -27,6 +27,7 @@ private:
     boost::shared_ptr<message_filters::Subscriber<sensor_msgs::PointCloud2> > pc1_sub_;
     std::string pc2_topic_;
     boost::shared_ptr<message_filters::Subscriber<sensor_msgs::PointCloud2> > pc2_sub_;
+    std::string output_topic_;
     ros::Publisher pointcloud_pub_;
     boost::shared_ptr<message_filters::Synchronizer<sync_policy> > sync_;
     ros::NodeHandle nh_;
