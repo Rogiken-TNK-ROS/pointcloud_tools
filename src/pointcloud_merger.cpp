@@ -21,15 +21,31 @@ void pointcloud_merger::callback_(const sensor_msgs::PointCloud2ConstPtr& pc1_ms
 {
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr pcl_pc1;
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr pcl_pc2;
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr output_pcl_pc_;
+    sensor_msgs::PointCloud2 transformed_pc1;
+    sensor_msgs::PointCloud2 transformed_pc2;
     if(pc1_msg->header.frame_id != output_frame_)
     {
-
+        geometry_msgs::TransformStamped transform_stamped;
+        transform_stamped = tf_buffer_.lookupTransform(pc1_msg->header.frame_id, output_frame_, ros::Time(0));
+        tf2::doTransform(*pc1_msg, transformed_pc1, transform_stamped);
+    }
+    else
+    {
+        transformed_pc1 = *pc1_msg;
     }
     if(pc2_msg->header.frame_id != output_frame_)
     {
-
+        geometry_msgs::TransformStamped transform_stamped;
+        transform_stamped = tf_buffer_.lookupTransform(pc2_msg->header.frame_id, output_frame_, ros::Time(0));
+        tf2::doTransform(*pc2_msg, transformed_pc2, transform_stamped);
     }
-    pcl::fromROSMsg(*pc1_msg, *pcl_pc1);
-    pcl::fromROSMsg(*pc2_msg, *pcl_pc2);
+    else
+    {
+        transformed_pc2 = *pc2_msg;
+    }
+    pcl::fromROSMsg(transformed_pc1, *pcl_pc1);
+    pcl::fromROSMsg(transformed_pc2, *pcl_pc2);
+    *output_pcl_pc_ = *pcl_pc1 + *pcl_pc2;
     return;
 }
