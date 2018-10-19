@@ -47,5 +47,8 @@ void pointcloud_merger::callback_(const sensor_msgs::PointCloud2ConstPtr& pc1_ms
     pcl::fromROSMsg(transformed_pc1, *pcl_pc1);
     pcl::fromROSMsg(transformed_pc2, *pcl_pc2);
     *output_pcl_pc_ = *pcl_pc1 + *pcl_pc2;
+    sensor_msgs::PointCloud2 output_msg;
+    pcl::toROSMsg(*output_pcl_pc_, output_msg);
+    pointcloud_pub_.publish(output_msg);
     return;
 }
